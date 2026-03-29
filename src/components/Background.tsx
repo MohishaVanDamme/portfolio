@@ -1,19 +1,9 @@
 import { useEffect, useState } from "react";
 
 function Background() {
-  const [isMobile, setIsMobile] = useState(false);
   const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
-    // Detect mobile
-    const media = window.matchMedia("(max-width: 768px)");
-    const updateMobile = () => setIsMobile(media.matches);
-
-    if (media.addEventListener) media.addEventListener("change", updateMobile);
-    else media.addListener(updateMobile);
-
-    updateMobile(); // initial check
-
     // Detect dark mode
     const darkMedia = window.matchMedia("(prefers-color-scheme: dark)");
     const updateDark = () => setIsDark(darkMedia.matches);
@@ -24,9 +14,6 @@ function Background() {
     updateDark(); // initial check
 
     return () => {
-      if (media.removeEventListener) media.removeEventListener("change", updateMobile);
-      else media.removeListener(updateMobile);
-
       if (darkMedia.removeEventListener) darkMedia.removeEventListener("change", updateDark);
       else darkMedia.removeListener(updateDark);
     };
@@ -59,14 +46,15 @@ function Background() {
 
   return (
     <div
-      className={`-z-10 overflow-hidden`}
+      className="background -z-10 overflow-hidden"
       style={{
-        position: isMobile ? "absolute" : "fixed",
+        position: "fixed",
         top: 0,
         left: 0,
         width: "100vw",
-        height: isMobile ? "auto" : "100vh",
-        minHeight: "100%",
+        height: "100vh",
+        minHeight: "100vh",
+        pointerEvents: "none",
         background: baseGradient,
       }}
     >

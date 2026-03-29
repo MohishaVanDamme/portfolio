@@ -179,7 +179,8 @@ code {
 
 @media (max-width: 768px) {
   .background {
-    position: absolute; /* mobiel scrollt mee */
-    min-height: 100%; /* vult content hoogte */
+    position: fixed; /* houd overal dezelfde full-screen look op mobiel */
+    height: 100vh;
+    width: 100vw;
   }
 }
