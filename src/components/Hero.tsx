@@ -1,4 +1,4 @@
-import { Link } from '@heroui/react';
+import { Link } from "react-router-dom";
 import { Image } from "@heroui/image"
 import { useEffect, useState } from "react"
 
@@ -51,18 +51,18 @@ function Hero() {
           <div className="justify-self-center">
             <span className="flex flex-col gap-4">
               <span className="inline-flex justify-center">
-                <Link href="/projects">Bekijk mijn projecten</Link>
+                <Link to="/projects">Bekijk mijn projecten</Link>
               </span>
               of
               <span className="inline-flex justify-center">
-                <Link href="/contact">Neem contact met mij op!</Link>
+                <Link to="/contact">Neem contact met mij op!</Link>
               </span>
             </span>
           </div>
 
           <div className="flex justify-center">
             <Image
-              src="/mezelf.jpg"
+              src="/portfolio/mezelf.jpg"
               alt="Foto van mezelf"
               width={220}
               height={220}
@@ -81,7 +81,7 @@ function Hero() {
           {/* 🔥 CONTENT */}
           <div className="relative z-10 flex flex-col justify-evenly gap-6 text-center">
             <Image
-              src="/mezelf.jpg"
+              src="/portfolio/mezelf.jpg"
               alt="Foto van mezelf"
               width={220}
               height={220}
@@ -113,11 +113,11 @@ function Hero() {
             <div className="justify-self-center">
               <span className="grid grid-cols-[auto_4rem_auto]">
                 <span className="inline-flex justify-end">
-                  <Link href="/projects">Bekijk mijn projecten</Link>
+                  <Link to="/projects">Bekijk mijn projecten</Link>
                 </span>
                 of
                 <span className="inline-flex">
-                  <Link href="/contact">
+                  <Link to="/contact">
                     neem contact met mij op!
                   </Link>
                 </span>

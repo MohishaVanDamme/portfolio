@@ -1,52 +1,8 @@
-/*import Contact from './components/Contact.js';
-import Hero from './components/Hero.js';
-import Sidebar from './components/Navbar.js';
-import Projects from './components/Projects.js';
-import Skills from './components/Skills.js';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-
-
-function App() {
-  return (
-    <BrowserRouter>
-				<Sidebar />
-				<Routes>
-					<Route
-						path='/'
-						element={
-              <Hero />
-            }
-					/>
-					<Route
-						path='/skills'
-						element={
-							<Skills />
-						}
-					/>
-					<Route
-						path='/projects'
-						element={
-							<Projects />
-						}
-					/>
-          <Route
-						path='/contact'
-						element={
-							<Contact />
-						}
-					/>
-				</Routes>
-		</BrowserRouter>
-  );
-}
-
-export default App;*/
-
-import Contact from './components/Contact.js';
-import Hero from './components/Hero.js';
-import Sidebar from './components/Navbar.js';
-import Projects from './components/Projects.js';
-import Skills from './components/Skills.js';
+import Contact from './components/Contact';
+import Hero from './components/Hero';
+import Sidebar from './components/Navbar';
+import Projects from './components/Projects';
+import Skills from './components/Skills';
 import { HashRouter, Route, Routes } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -102,11 +58,11 @@ function App() {
 
           </div>
           <Routes>
-            <Route path='/' element={<Hero />} />
-            <Route path='/skills' element={<Skills />} />
-            <Route path='/projects' element={<Projects />} />
-            <Route path='/contact' element={<Contact />} />
-          </Routes>
+			<Route path='/' element={<Hero />} />
+			<Route path='/skills' element={<Skills />} />
+			<Route path='/projects' element={<Projects />} />
+			<Route path='/contact' element={<Contact />} />
+		  </Routes>
         </main>
 
       </div>

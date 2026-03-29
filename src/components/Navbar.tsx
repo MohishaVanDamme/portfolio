@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { User, Code, File, Mail, Menu, X } from "lucide-react";
-import { Button, Link } from "@heroui/react";
+import { Button } from "@heroui/react";
+import { Link } from "react-router-dom";
 
 type SidebarProps = {
   setSidebarWidth: React.Dispatch<React.SetStateAction<number>>;
@@ -63,19 +64,19 @@ function Sidebar({ setSidebarWidth }: SidebarProps) {
             <X className="text-white" />
           </Button>
 
-          <Link href="/" onClick={() => setIsOpen(false)}>
+          <Link to="/" onClick={() => setIsOpen(false)}>
             <p className="text-white text-2xl">Over mij</p>
           </Link>
 
-          <Link href="/skills" onClick={() => setIsOpen(false)}>
+          <Link to="/skills" onClick={() => setIsOpen(false)}>
             <p className="text-white text-2xl">Vaardigheden</p>
           </Link>
 
-          <Link href="/projects" onClick={() => setIsOpen(false)}>
+          <Link to="/projects" onClick={() => setIsOpen(false)}>
             <p className="text-white text-2xl">Projecten</p>
           </Link>
 
-          <Link href="/contact" onClick={() => setIsOpen(false)}>
+          <Link to="/contact" onClick={() => setIsOpen(false)}>
             <p className="text-white text-2xl">Contact</p>
           </Link>
         </div>
@@ -98,25 +99,25 @@ function Sidebar({ setSidebarWidth }: SidebarProps) {
             }`}
           >
             {/* ABOUT */}
-            <Link href="/" className={linkClasses()}>
+            <Link to="/" className={linkClasses()}>
               <User className="text-white" size={20} />
               {expanded && <p className="text-white">Over mij</p>}
             </Link>
 
             {/* SKILLS */}
-            <Link href="/skills" className={linkClasses()}>
+            <Link to="/skills" className={linkClasses()}>
               <Code className="text-white" size={20} />
               {expanded && <p className="text-white">Vaardigheden</p>}
             </Link>
 
             {/* PROJECTS */}
-            <Link href="/projects" className={linkClasses()}>
+            <Link to="/projects" className={linkClasses()}>
               <File className="text-white" size={20} />
               {expanded && <p className="text-white">Projecten</p>}
             </Link>
 
             {/* CONTACT */}
-            <Link href="/contact" className={linkClasses()}>
+            <Link to="/contact" className={linkClasses()}>
               <Mail className="text-white" size={20} />
               {expanded && <p className="text-white">Contact</p>}
             </Link>
