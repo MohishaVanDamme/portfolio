@@ -50,7 +50,7 @@ function Skills() {
 
   // Dynamic colors for light/dark mode
   const textColor = isDark ? "text-gray-200" : "text-gray-900";
-  const accentColor = isDark ? "text-purple-400" : "text-accent"; // matches CSS variable
+  const accentColor = isDark ? "text-purple-400" : "text-accent";
   const headingColor = isDark ? "text-gray-100" : "text-gray-900";
 
   return (

@@ -67,7 +67,7 @@ function Hero() {
 
           <div className="flex justify-center">
             <Image
-              src="/portfolio/mezelf.jpg"
+              src={`${import.meta.env.BASE_URL}mezelf.jpg`}
               alt="Foto van mezelf"
               width={220}
               height={220}
@@ -85,7 +85,7 @@ function Hero() {
         >
           <div className="relative z-10 flex flex-col justify-evenly gap-6 text-center">
             <Image
-              src="/portfolio/mezelf.jpg"
+              src={`${import.meta.env.BASE_URL}mezelf.jpg`}
               alt="Foto van mezelf"
               width={220}
               height={220}

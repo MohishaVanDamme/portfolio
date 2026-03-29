@@ -65,7 +65,7 @@ function Sidebar({ setSidebarWidth }: SidebarProps) {
     { to: "/contact", icon: <Mail size={20} />, label: "Contact" },
   ];
 
-  const cvLink = { href: "/portfolio/assets/CV_Mohisha_Van_Damme.pdf", icon: <FileDown size={20} />, label: "Download CV", download: "CV_Mohisha_Van_Damme.pdf" };
+  const cvLink = { href: `${import.meta.env.BASE_URL}CV_Mohisha_Van_Damme.pdf`, icon: <FileDown size={20} />, label: "Download CV", download: true };
 
   return (
     <>
@@ -93,7 +93,6 @@ function Sidebar({ setSidebarWidth }: SidebarProps) {
 
           {[...navLinks, cvLink].map((link) => {
             if ("href" in link) {
-            // download link
             return (
               <a
                 key={link.href}
