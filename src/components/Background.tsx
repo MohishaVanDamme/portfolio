@@ -19,7 +19,7 @@ function Background() {
     };
   }, []);
 
-  // Background colors for light/dark mode
+  // Background gradients
   const baseGradient = isDark
     ? "linear-gradient(135deg, #16171d 0%, #2e303a 50%, #1f2028 100%)"
     : "linear-gradient(135deg, #faf7ff 0%, #ebdcff 50%, #d4b8ff 100%)";
@@ -52,8 +52,9 @@ function Background() {
         top: 0,
         left: 0,
         width: "100vw",
-        height: "100vh",
-        minHeight: "100vh",
+        height: "100svh",   // ✔️ mobile-friendly height
+        minHeight: "100svh",
+        maxHeight: "100vh", // fallback voor oudere browsers
         pointerEvents: "none",
         background: baseGradient,
       }}
