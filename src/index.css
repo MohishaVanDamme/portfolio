@@ -6,7 +6,7 @@
 :root {
   --text: #08060d;
   --text-h: #08060d;
-  --bg: #d4b8ff;
+  --bg: #ebdcff;
   --border: #e5e4e7;
   --code-bg: #f4f3ec;
   --accent: #b388eb;
@@ -182,5 +182,89 @@ code {
     position: fixed; /* houd overal dezelfde full-screen look op mobiel */
     height: 100vh;
     width: 100vw;
+  }
+}
+
+/* 🌊 FLOAT ANIMATIONS */
+@keyframes float-slow {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(20px, -20px); }
+}
+
+@keyframes float-fast {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(30px, -30px); }
+}
+
+.animate-float-slow {
+  animation: float-slow 25s ease-in-out infinite;
+}
+
+.animate-float-fast {
+  animation: float-fast 15s ease-in-out infinite;
+}
+
+/* 🌌 BACKGROUND LAYERS */
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100svh;  /* mobiel-vriendelijk */
+  min-height: 100svh;
+  max-height: 100vh; /* fallback */
+  pointer-events: none;
+  overflow: hidden;
+  z-index: -10;
+}
+
+.background .layer {
+  position: absolute;
+  inset: 0;
+  filter: blur(60px); /* kan per layer aangepast worden */
+  will-change: transform;
+}
+
+/* Je kan hier ook dark/light mode gradients maken via CSS variables */
+:root {
+  --bg-light: linear-gradient(135deg, #faf7ff 0%, #ebdcff 50%, #d4b8ff 100%);
+  --nebula1-light: radial-gradient(circle at 20% 30%, rgba(179,136,235,0.45), transparent 50%),
+                    radial-gradient(circle at 80% 70%, rgba(200,160,255,0.4), transparent 50%);
+  --nebula2-light: radial-gradient(circle at 60% 20%, rgba(147,51,234,0.45), transparent 60%),
+                    radial-gradient(circle at 30% 80%, rgba(168,85,247,0.4), transparent 60%);
+
+  --bg-dark: linear-gradient(135deg, #16171d 0%, #2e303a 50%, #1f2028 100%);
+  --nebula1-dark: radial-gradient(circle at 20% 30%, rgba(120,81,220,0.3), transparent 50%),
+                   radial-gradient(circle at 80% 70%, rgba(160,120,255,0.2), transparent 50%);
+  --nebula2-dark: radial-gradient(circle at 60% 20%, rgba(100,50,200,0.35), transparent 60%),
+                   radial-gradient(circle at 30% 80%, rgba(150,80,240,0.25), transparent 60%);
+}
+
+/* 🌙 DARK MODE */
+@media (prefers-color-scheme: dark) {
+  .background {
+    background: var(--bg-dark);
+  }
+  .background .layer.layer1 {
+    background: var(--nebula1-dark);
+    filter: blur(60px);
+  }
+  .background .layer.layer2 {
+    background: var(--nebula2-dark);
+    filter: blur(80px);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  .background {
+    background: var(--bg-light);
+  }
+  .background .layer.layer1 {
+    background: var(--nebula1-light);
+    filter: blur(60px);
+  }
+  .background .layer.layer2 {
+    background: var(--nebula2-light);
+    filter: blur(80px);
   }
 }
