@@ -65,7 +65,7 @@ function Sidebar({ setSidebarWidth }: SidebarProps) {
     { to: "/contact", icon: <Mail size={20} />, label: "Contact" },
   ];
 
-  const cvLink = { href: "/assets/CV_Mohisha_Van_Damme.pdf", icon: <FileDown size={20} />, label: "Download CV", download: true };
+  const cvLink = { href: "/portfolio/assets/CV_Mohisha_Van_Damme.pdf", icon: <FileDown size={20} />, label: "Download CV", download: "CV_Mohisha_Van_Damme.pdf" };
 
   return (
     <>
