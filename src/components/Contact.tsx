@@ -1,4 +1,3 @@
-import { Link } from '@heroui/react';
 import { Mail, Smartphone, MapPin } from "lucide-react";
 import { useEffect, useState } from "react";
 import { FaLinkedin, FaGithub } from "react-icons/fa";
@@ -11,10 +10,22 @@ function Contact() {
 
     const update = () => setIsMobile(media.matches);
 
-    update(); // initial check
-    media.addEventListener("change", update);
+    // compatibele listener
+    if (media.addEventListener) {
+      media.addEventListener("change", update);
+    } else {
+      media.addListener(update);
+    }
 
-    return () => media.removeEventListener("change", update);
+    update(); // initial check
+
+    return () => {
+      if (media.removeEventListener) {
+        media.removeEventListener("change", update);
+      } else {
+        media.removeListener(update);
+      }
+    };
   }, []);
 
   return (
@@ -22,16 +33,16 @@ function Contact() {
       className="flex flex-col gap-4 w-full"
       style={isMobile ? styles.gsm : styles.section}
     >
-      <h1 className="text-center">
+      <h1 className="text-center text-3xl font-bold">
         Contacteer mij
       </h1>
 
-      <p>
+      <p className="text-center">
         Ik sta open voor werkplaatsen, projecten of samenwerkingen.
       </p>
 
       {/* CONTACT INFO */}
-      <div className="flex flex-col gap-3">
+      <div className="flex flex-col gap-3 mt-4">
         <div className="flex gap-3 items-center">
           <Smartphone size={20} />
           <p>+32493070787</p>
@@ -39,34 +50,42 @@ function Contact() {
 
         <div className="flex gap-3 items-center">
           <Mail size={20} />
-          <Link href="mailto:mohisha.vd@outlook.com">
+          <a href="mailto:mohisha.vd@outlook.com">
             mohisha.vd@outlook.com
-          </Link>
+          </a>
         </div>
 
         <div className="flex gap-3 items-center">
           <FaLinkedin size={20} />
-          <Link href="https://www.linkedin.com/in/mohisha-van-damme/">
+          <a
+            href="https://www.linkedin.com/in/mohisha-van-damme/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             LinkedIn profiel
-          </Link>
+          </a>
         </div>
 
         <div className="flex gap-3 items-center">
           <FaGithub size={20} />
-          <Link href="https://github.com/MohishaVanDamme">
+          <a
+            href="https://github.com/MohishaVanDamme"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             GitHub profiel
-          </Link>
+          </a>
         </div>
       </div>
 
       {/* LOCATION */}
-      <div className="flex flex-col gap-2 mt-4">
+      <div className="flex flex-col gap-2 mt-6">
         <div className="flex gap-3 items-center">
           <MapPin size={20} />
           <p>Muydt 14, 1547 Bever</p>
         </div>
 
-        <div className="w-full h-100 rounded-xl overflow-hidden shadow-lg">
+        <div className="w-full h-96 rounded-xl overflow-hidden shadow-lg mt-2">
           <iframe
             title="Map - Muydt 14 Bever"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2527.022405073239!2d3.916408776783288!3d50.70096877164115!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3ae9ec731e80b%3A0x37497a12aa768b41!2sMuydt%2014%2C%201547%20Bever!5e0!3m2!1snl!2sbe!4v1774703582571!5m2!1snl!2sbe"
@@ -85,8 +104,8 @@ const styles = {
     padding: "0rem 2rem",
   },
   gsm: {
-    padding: "2.5rem 1rem"
-  }
+    padding: "2.5rem 1rem",
+  },
 };
 
 export default Contact;
