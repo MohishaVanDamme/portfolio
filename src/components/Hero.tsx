@@ -1,22 +1,21 @@
 import { Link } from "react-router-dom";
-import { Image } from "@heroui/image"
-import { useEffect, useState } from "react"
-
+import { Image } from "@heroui/image";
+import { useEffect, useState } from "react";
 
 function Hero() {
-  const [isMobile, setIsMobile] = useState(false)
+  const [isMobile, setIsMobile] = useState(false);
 
   // Detect mobile screen
   useEffect(() => {
-    const media = window.matchMedia("(max-width: 768px)")
+    const media = window.matchMedia("(max-width: 768px)");
 
-    const update = () => setIsMobile(media.matches)
+    const update = () => setIsMobile(media.matches);
 
-    update()
-    media.addEventListener("change", update)
+    update();
+    media.addEventListener("change", update);
 
-    return () => media.removeEventListener("change", update)
-  }, [])
+    return () => media.removeEventListener("change", update);
+  }, []);
 
   return (
     <>
@@ -27,11 +26,13 @@ function Hero() {
           style={styles.gsm}
         >
           <div>
-            <h1>Hi, ik ben Mohisha <span className="wave">👋</span></h1>
+            <h1>
+              Hi, ik ben Mohisha <span className="wave">👋</span>
+            </h1>
             <h2>Full Stack Developer in opleiding</h2>
           </div>
 
-          <div>
+          <div className="text-sm">
             <p>
               Gemotiveerde developer met een passie voor webontwikkeling en oog
               voor detail.
@@ -41,7 +42,7 @@ function Hero() {
             </p>
           </div>
 
-          <div>
+          <div className="text-sm">
             <p>
               Momenteel studeer ik Toegepaste Informatica en ben ik op zoek naar
               kansen om mijn skills verder te ontwikkelen in de praktijk.
@@ -51,11 +52,15 @@ function Hero() {
           <div className="justify-self-center">
             <span className="flex flex-col gap-4">
               <span className="inline-flex justify-center">
-                <Link to="/projects">Bekijk mijn projecten</Link>
+                <Link to="/projects" className="underline hover:text-accent">
+                  Bekijk mijn projecten
+                </Link>
               </span>
               of
               <span className="inline-flex justify-center">
-                <Link to="/contact">Neem contact met mij op!</Link>
+                <Link to="/contact" className="underline hover:text-accent">
+                  Neem contact met mij op!
+                </Link>
               </span>
             </span>
           </div>
@@ -78,7 +83,6 @@ function Hero() {
           className="relative flex items-center justify-center min-h-screen w-full overflow-hidden"
           style={styles.section}
         >
-          {/* 🔥 CONTENT */}
           <div className="relative z-10 flex flex-col justify-evenly gap-6 text-center">
             <Image
               src="/portfolio/mezelf.jpg"
@@ -89,11 +93,13 @@ function Hero() {
             />
 
             <div>
-              <h1>Hi, ik ben Mohisha <span className="wave">👋</span></h1>
+              <h1>
+                Hi, ik ben Mohisha <span className="wave">👋</span>
+              </h1>
               <h2>Full Stack Developer in opleiding</h2>
             </div>
 
-            <div>
+            <div className="text-sm">
               <p>
                 Gemotiveerde developer met een passie voor webontwikkeling en
                 oog voor detail.
@@ -103,7 +109,7 @@ function Hero() {
               </p>
             </div>
 
-            <div>
+            <div className="text-sm">
               <p>
                 Momenteel studeer ik Toegepaste Informatica en ben ik op zoek
                 naar kansen om mijn skills verder te ontwikkelen in de praktijk.
@@ -113,12 +119,14 @@ function Hero() {
             <div className="justify-self-center">
               <span className="grid grid-cols-[auto_4rem_auto]">
                 <span className="inline-flex justify-end">
-                  <Link to="/projects">Bekijk mijn projecten</Link>
+                  <Link to="/projects" className="underline hover:text-accent">
+                    Bekijk mijn projecten
+                  </Link>
                 </span>
                 of
                 <span className="inline-flex">
-                  <Link to="/contact">
-                    neem contact met mij op!
+                  <Link to="/contact" className="underline hover:text-accent">
+                    Neem contact met mij op!
                   </Link>
                 </span>
               </span>
@@ -127,7 +135,7 @@ function Hero() {
         </div>
       )}
     </>
-  )
+  );
 }
 
 const styles = {
@@ -137,6 +145,6 @@ const styles = {
   gsm: {
     padding: "2.5rem 1rem",
   },
-}
+};
 
-export default Hero
+export default Hero;

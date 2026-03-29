@@ -2,6 +2,7 @@
 @tailwind utilities;
 @import "@heroui/styles";
 
+/* 🌟 ROOT VARIABLES */
 :root {
   --text: #08060d;
   --text-h: #08060d;
@@ -34,11 +35,12 @@
   }
 }
 
+/* 🌙 DARK MODE */
 @media (prefers-color-scheme: dark) {
   :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
+    --text: #e5e7eb; /* lichte tekst */
+    --text-h: #f3f4f6; /* headings */
+    --bg: #16171d; /* donkere achtergrond */
     --border: #2e303a;
     --code-bg: #1f2028;
     --accent: #c084fc;
@@ -54,18 +56,26 @@
   }
 }
 
-#root {
+/* 🌐 ROOT LAYOUT */
+html, body, #root {
+  margin: 0;
+  padding: 0;
   width: 100%;
-  max-width: 100%;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: row;
+  height: 100%;
   box-sizing: border-box;
+  background-color: var(--bg); /* darkmode compatibel */
+  color: var(--text);
 }
 
-h1,
-h2 {
+#root {
+  display: flex;
+  flex-direction: row;
+  min-height: 100svh;
+  max-width: 100%;
+}
+
+/* 🌸 TYPOGRAPHY */
+h1, h2 {
   font-family: var(--heading);
   font-weight: 500;
   color: var(--text-h);
@@ -81,6 +91,7 @@ h1 {
     margin: 20px 0;
   }
 }
+
 h2 {
   font-size: 24px;
   line-height: 118%;
@@ -91,9 +102,7 @@ h2 {
   }
 }
 
-
-code,
-.counter {
+code, .counter {
   font-family: var(--mono);
   display: inline-flex;
   border-radius: 4px;
@@ -107,16 +116,11 @@ code {
   background: var(--code-bg);
 }
 
+/* 🌊 ANIMATIONS */
 @keyframes blob {
-  0%, 100% {
-    transform: translate(0, 0);
-  }
-  33% {
-    transform: translate(40px, -60px);
-  }
-  66% {
-    transform: translate(-30px, 30px);
-  }
+  0%, 100% { transform: translate(0, 0); }
+  33% { transform: translate(40px, -60px); }
+  66% { transform: translate(-30px, 30px); }
 }
 
 .animate-blob {
@@ -128,12 +132,8 @@ code {
 }
 
 @keyframes float {
-  0%, 100% {
-    transform: translate(0, 0);
-  }
-  50% {
-    transform: translate(20px, -20px);
-  }
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(20px, -20px); }
 }
 
 .animate-float-slow {
@@ -159,4 +159,27 @@ code {
   50% { transform: rotate(10deg); }
   60% { transform: rotate(0deg); }
   100% { transform: rotate(0deg); }
+}
+
+/* 🌌 BACKGROUND FULL-BLEED */
+.background {
+  position: fixed; /* desktop */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: -10;
+  background-color: var(--bg); /* ondersteunt darkmode */
+}
+
+.background > div {
+  transition: background 0.3s ease; /* smooth darkmode overgang */
+}
+
+@media (max-width: 768px) {
+  .background {
+    position: absolute; /* mobiel scrollt mee */
+    min-height: 100%; /* vult content hoogte */
+  }
 }
