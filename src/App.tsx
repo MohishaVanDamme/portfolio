@@ -47,14 +47,14 @@ import Hero from './components/Hero.js';
 import Sidebar from './components/Navbar.js';
 import Projects from './components/Projects.js';
 import Skills from './components/Skills.js';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import { useState } from 'react';
 
 function App() {
   const [sidebarWidth, setSidebarWidth] = useState(60);
 
   return (
-    <BrowserRouter>
+    <HashRouter>
       <div className="flex w-full h-full">
 
         <Sidebar setSidebarWidth={setSidebarWidth} />
@@ -110,7 +110,7 @@ function App() {
         </main>
 
       </div>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
