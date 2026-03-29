@@ -2,7 +2,11 @@ import { useEffect, useState } from "react";
 import { User, Code, File, Mail, Menu, X } from "lucide-react";
 import { Button, Link } from "@heroui/react";
 
-function Sidebar({ setSidebarWidth }) {
+type SidebarProps = {
+  setSidebarWidth: React.Dispatch<React.SetStateAction<number>>;
+};
+
+function Sidebar({ setSidebarWidth }: SidebarProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
