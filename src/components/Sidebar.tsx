@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { User, Code, File, Mail, Menu, X } from "lucide-react";
+import { User, Code, File, Mail, Menu, X, FileDown } from "lucide-react";
 import { Button } from "@heroui/react";
 import { Link, useLocation } from "react-router-dom";
 
@@ -65,6 +65,8 @@ function Sidebar({ setSidebarWidth }: SidebarProps) {
     { to: "/contact", icon: <Mail size={20} />, label: "Contact" },
   ];
 
+  const cvLink = { href: "/assets/CV_Mohisha_Van_Damme.pdf", icon: <FileDown size={20} />, label: "Download CV", download: true };
+
   return (
     <>
       {/* MOBILE MENU BUTTON */}
@@ -89,11 +91,26 @@ function Sidebar({ setSidebarWidth }: SidebarProps) {
             <X className={textColor} />
           </Button>
 
-          {navLinks.map((link) => (
-            <Link key={link.to} to={link.to} onClick={() => setIsOpen(false)}>
-              <p className={`text-white text-2xl`}>{link.label}</p>
-            </Link>
-          ))}
+          {[...navLinks, cvLink].map((link) => {
+            if ("href" in link) {
+            // download link
+            return (
+              <a
+                key={link.href}
+                href={link.href}
+                download={link.download}
+                onClick={() => setIsOpen(false)}
+              >
+                <p className={`text-white text-2xl`}>{link.label}</p>
+              </a>
+            );
+          } else {
+            return(
+              <Link key={link.to} to={link.to!} onClick={() => setIsOpen(false)}>
+                <p className={`text-white text-2xl`}>{link.label}</p>
+              </Link>
+            );
+          }})}
         </div>
       )}
 
@@ -109,12 +126,26 @@ function Sidebar({ setSidebarWidth }: SidebarProps) {
             {navLinks.map((link) => {
               const active = location.pathname === link.to;
               return (
-                <Link key={link.to} to={link.to} className={linkClasses(active)}>
+                <Link key={link.to} to={link.to!} className={linkClasses(active)}>
                   {link.icon}
                   {expanded && <p className={textColor}>{link.label}</p>}
                 </Link>
               );
             })}
+
+            {/* Spacer duwt de download-link naar onder */}
+            <div className="flex-1" />
+
+            {/* Download-link onderaan */}
+            <a
+                key={cvLink.href}
+                href={cvLink.href}
+                download={cvLink.download}
+                className={linkClasses(false)}
+              >
+                {cvLink.icon}
+                {expanded && <p className={textColor}>{cvLink.label}</p>}
+              </a>
           </div>
         </nav>
       )}
